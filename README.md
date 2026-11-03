@@ -1,4 +1,4 @@
-# Foursome
+# Pair up
 
 Clickable NY / NJ public-golf demo: all-in prices, singles matching, friend RSVP, waitlist claims.
 

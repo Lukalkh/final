@@ -4,8 +4,13 @@ import { Shell } from "@/components/Shell";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Foursome — groups for golf, tennis, pickleball",
+  title: "Pair up — groups for golf, tennis, pickleball",
   description: "Form the group first. Then hold a NY / NJ public sheet. Pay at the venue.",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

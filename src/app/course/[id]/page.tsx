@@ -9,7 +9,7 @@ import { youIn } from "@/lib/group";
 import { ruleLabel } from "@/lib/handicap";
 import { SPORTS, isFull, skillOf } from "@/lib/sports";
 import { useStore } from "@/lib/store";
-import { availabilityFor, money, priceFor, priceLines, venueById } from "@/lib/venues";
+import { availabilityFor, money, priceFor, priceLines, venueById, venueImage } from "@/lib/venues";
 import type { HandicapRule } from "@/lib/types";
 
 function CourseInner() {
@@ -56,6 +56,9 @@ function CourseInner() {
   return (
     <div className="split">
       <div>
+        <figure className="venue-hero">
+          <img src={venueImage(venue.id)} alt={venue.name} />
+        </figure>
         <p className="kicker">
           {venue.city}, {venue.state} · {spec.label}
         </p>

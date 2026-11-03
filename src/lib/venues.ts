@@ -234,6 +234,10 @@ export function venueNames(ids: string[]): string[] {
   return ids.map((id) => venueById(id)?.shortName ?? id);
 }
 
+export function venueImage(id: string): string {
+  return `/venues/${id}.jpg`;
+}
+
 export function priceFor(venue: Venue, walk: boolean): PriceBreak {
   if (venue.sport === "golf") {
     const course = COURSES.find((item) => item.id === venue.id);

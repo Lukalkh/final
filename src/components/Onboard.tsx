@@ -23,7 +23,8 @@ export function Onboard() {
       <p className="kicker">Start here</p>
       <h1>Who’s playing?</h1>
       <p className="lede">Name and skill. Then you can join, post, or hold a sheet.</p>
-      <div className="panel stack" style={{ marginTop: 20 }}>
+      <div className="hero-rule" />
+      <div className="panel stack" style={{ marginTop: 22 }}>
         <label>
           Name
           <input

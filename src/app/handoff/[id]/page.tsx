@@ -7,7 +7,7 @@ import { groupAvg, taken, whenLabel } from "@/lib/group";
 import { formatHcp, ruleLabel } from "@/lib/handicap";
 import { SPORTS } from "@/lib/sports";
 import { useStore } from "@/lib/store";
-import { money, priceFor, priceLines, venueById } from "@/lib/venues";
+import { money, priceFor, priceLines, venueById, venueImage } from "@/lib/venues";
 
 export default function HandoffPage() {
   const { id } = useParams<{ id: string }>();
@@ -25,6 +25,9 @@ export default function HandoffPage() {
   return (
     <div className="split">
       <div>
+        <figure className="venue-hero">
+          <img src={venueImage(venue.id)} alt={venue.name} />
+        </figure>
         <p className="kicker">Pay the {spec.venue}</p>
         <h1>{venue.shortName}</h1>
         <p className="lede">

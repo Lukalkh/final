@@ -14,6 +14,7 @@ import {
   money,
   priceFor,
   priceLines,
+  venueImage,
   windowLabel,
   type Venue,
 } from "@/lib/venues";
@@ -24,6 +25,9 @@ type Row = { venue: Venue; avail: "open" | "soldout" | "fill"; price: PriceBreak
 function VenueRow({ row, action, href }: { row: Row; action: string; href: string }) {
   return (
     <article className="row">
+      <Link href={href} className="row-thumb" aria-hidden>
+        <img src={venueImage(row.venue.id)} alt="" />
+      </Link>
       <div>
         <h2>
           <Link href={href}>{row.venue.shortName}</Link>

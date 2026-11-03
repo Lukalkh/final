@@ -37,27 +37,30 @@ export default function HomePage() {
 
   return (
     <>
-      <h1>This is a group, not a {spec.sheet}.</h1>
-      <p className="lede">
-        {profile.displayName} · {spec.skill} {formatHcp(skill)}. Join or start a {spec.label.toLowerCase()}{" "}
-        group. We only open a {spec.sheet} after people are in.
-      </p>
+      <div className="hero">
+        <p className="kicker">NY / NJ</p>
+        <h1>{spec.label}</h1>
+        <p className="lede">
+          {profile.displayName} · {spec.skill} {formatHcp(skill)}. Join or start a {spec.label.toLowerCase()}{" "}
+          group. We only open a {spec.sheet} after people are in.
+        </p>
+        <div className="hero-rule" />
+      </div>
       {mine.length ? (
         <p className="mine">
-          Yours:{" "}
-          {mine.map((group, i) => (
-            <span key={group.id}>
-              {i ? " · " : ""}
-              <Link href={`/group/${group.id}`}>{group.name}</Link>
-            </span>
+          <span>Yours</span>
+          {mine.map((group) => (
+            <Link key={group.id} href={`/group/${group.id}`}>
+              {group.name}
+            </Link>
           ))}
         </p>
       ) : null}
-      <div style={{ marginTop: 20, marginBottom: 36 }}>
+      <div style={{ marginTop: 22, marginBottom: 36 }}>
         <StartGroup key={search.sport} />
       </div>
       <div className="cards">
-        <section className="stack">
+        <section className="stack board-col">
           <p className="kicker">Need one more</p>
           {board.join.length ? (
             board.join.map((group) => (
@@ -72,7 +75,7 @@ export default function HomePage() {
             <p className="fine">None right now.</p>
           )}
         </section>
-        <section className="stack">
+        <section className="stack board-col">
           <p className="kicker">Pair a solo</p>
           {board.pair.length ? (
             board.pair.map((group) => (
@@ -88,7 +91,7 @@ export default function HomePage() {
             <p className="fine">None right now.</p>
           )}
         </section>
-        <section className="stack">
+        <section className="stack board-col">
           <p className="kicker">Looking</p>
           {board.looking.length ? (
             board.looking.map((group) => (

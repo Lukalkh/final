@@ -27,7 +27,10 @@ export function GroupCard({
 
   return (
     <article className="card">
-      <Dots filled={taken(group)} max={group.cap} />
+      <div className="card-top">
+        <Dots filled={taken(group)} max={group.cap} />
+        <span className={seats === 0 ? "pill warn" : "pill"}>{seats === 0 ? "Full" : `${seats} open`}</span>
+      </div>
       <h3>{group.name}</h3>
       <p className="fine">
         Avg {spec.skill} {formatHcp(groupAvg(group))} · {ruleLabel(group.skillRule, spec.skill)}
@@ -35,10 +38,7 @@ export function GroupCard({
       <p className="fine">
         {venueNames(group.venueIds).join(" / ") || "Any"} · {whenLabel(group)}
       </p>
-      <p className="fine">
-        {seats === 0 ? "Full" : `${seats} open`}
-        {group.state === "ready" ? " · ready for a sheet" : ""}
-      </p>
+      {group.state === "ready" ? <p className="fine">Ready for a sheet.</p> : null}
       {mine ? (
         <Link className="btn ghost" href={`/group/${group.id}`}>
           Open

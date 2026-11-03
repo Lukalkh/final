@@ -20,42 +20,47 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const { search, setSport, profile, ready } = useStore();
 
   return (
-    <div className="shell">
-      <header className="topbar">
-        <Link href="/" className="mark">
-          <Dots filled={4} ink />
-          <strong>Foursome</strong>
-        </Link>
-        {profile.setup ? (
-          <nav className="nav">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                data-active={
-                  path === link.href ||
-                  (link.href === "/" && path.startsWith("/group")) ||
-                  (link.href === "/yours" && (path.startsWith("/handoff") || path.startsWith("/invite")))
-                }
-              >
-                {link.label}
-              </Link>
+    <div className="app" data-sport={search.sport}>
+      <div className="shell">
+        <header className="topbar">
+          <Link href="/" className="mark">
+            <Dots filled={4} ink />
+            <strong>Pair up</strong>
+          </Link>
+          {profile.setup ? (
+            <nav className="nav">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  data-active={
+                    path === link.href ||
+                    (link.href === "/" && path.startsWith("/group")) ||
+                    (link.href === "/yours" && (path.startsWith("/handoff") || path.startsWith("/invite")))
+                  }
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          ) : null}
+        </header>
+        {ready && profile.setup ? (
+          <div className="sports">
+            {SPORT_LIST.map((id) => (
+              <button key={id} type="button" data-on={search.sport === id} onClick={() => setSport(id)}>
+                {SPORTS[id].label}
+              </button>
             ))}
-          </nav>
+          </div>
         ) : null}
-      </header>
-      {ready && profile.setup ? (
-        <div className="sports">
-          {SPORT_LIST.map((id) => (
-            <button key={id} type="button" data-on={search.sport === id} onClick={() => setSport(id)}>
-              {SPORTS[id].label}
-            </button>
-          ))}
-        </div>
-      ) : null}
-      <main className="page">
-        {!ready ? <p className="lede">Loading…</p> : profile.setup ? children : <Onboard />}
-      </main>
+        <main className="page">
+          {!ready ? <p className="lede">Loading…</p> : profile.setup ? children : <Onboard />}
+        </main>
+        {profile.setup ? (
+          <footer className="site-foot">NY / NJ · form the group first · pay at the venue</footer>
+        ) : null}
+      </div>
     </div>
   );
 }
