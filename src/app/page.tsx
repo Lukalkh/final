@@ -56,7 +56,8 @@ export default function HomePage() {
           ))}
         </p>
       ) : null}
-      <div style={{ marginTop: 22, marginBottom: 36 }}>
+      <div className="home-layout">
+      <div className="home-start">
         <StartGroup key={search.sport} />
       </div>
       <div className="cards">
@@ -106,6 +107,7 @@ export default function HomePage() {
             <p className="fine">None right now.</p>
           )}
         </section>
+      </div>
       </div>
     </>
   );

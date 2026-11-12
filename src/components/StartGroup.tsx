@@ -59,7 +59,7 @@ export function StartGroup() {
             <option value="any">Any</option>
           </select>
         </label>
-        <div style={{ gridColumn: "span 2" }}>
+        <div className="span-2">
           <HandicapRuleFields sport={search.sport} rule={rule} onChange={setRule} />
         </div>
       </div>

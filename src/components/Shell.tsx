@@ -21,8 +21,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="app" data-sport={search.sport}>
-      <div className="shell">
-        <header className="topbar">
+      <header className="topbar">
+        <div className="shell">
           <Link href="/" className="mark">
             <Dots filled={4} ink />
             <strong>Pair up</strong>
@@ -44,7 +44,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
               ))}
             </nav>
           ) : null}
-        </header>
+        </div>
+      </header>
+      <div className="shell">
         {ready && profile.setup ? (
           <div className="sports">
             {SPORT_LIST.map((id) => (
